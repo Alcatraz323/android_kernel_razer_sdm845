@@ -4164,12 +4164,6 @@ int dsi_display_cont_splash_config(void *dsi_display)
 		return -EINVAL;
 	}
 
-	/* Continuous splash not supported by external bridge */
-	if (dsi_display_has_ext_bridge(display)) {
-		display->is_cont_splash_enabled = false;
-		return 0;
-	}
-
 	mutex_lock(&display->display_lock);
 
 	/* Vote for gdsc required to read register address space */
@@ -4233,7 +4227,6 @@ int dsi_display_cont_splash_config(void *dsi_display)
 				display->panel->name, rc);
 		goto clks_disabled;
 	}
-
 	dsi_config_host_engine_state_for_cont_splash(display);
 	mutex_unlock(&display->display_lock);
 
