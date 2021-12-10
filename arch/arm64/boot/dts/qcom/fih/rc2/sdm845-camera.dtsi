@@ -113,12 +113,7 @@
 	};
 };
 
-&camera_vana_ldo {
-	status = "disabled";
-};
-
 &cam_cci {
-	/delete-node/ qcom,actuator@0;
 	actuator_wide: qcom,actuator@0 {
 		cell-index = <0>;
 		reg = <0x0>;
@@ -145,7 +140,6 @@
 		status = "ok";
 	};
 
-	/delete-node/ qcom,actuator@1;
 	actuator_tele: qcom,actuator@1 {
 		cell-index = <1>;
 		reg = <0x1>;
@@ -172,9 +166,6 @@
 		status = "ok";
 	};
 
-	/delete-node/ qcom,actuator@2;
-
-	/delete-node/ qcom,ois@0;
 	ois_wide: qcom,ois@0 {
 		cell-index = <0>;
 		reg = <0x0>;
@@ -203,8 +194,7 @@
 		gpio-req-tbl-label = "CAM_VAF", "CAM_VIO", "CAM_VANA";
 	};
 
-	/delete-node/ qcom,eeprom@0;
-	front_eeprom: qcom,eeprom@0 {
+	eeprom_front: qcom,eeprom@0 {
 		cell-index = <0>;
 		compatible = "qcom,eeprom";
 		reg = <0x0>;
@@ -239,7 +229,6 @@
 		clock-rates = <24000000>;
 	};
 
-	/delete-node/ qcom,eeprom@1;
 	eeprom_wide: qcom,eeprom@1 {
 		cell-index = <1>;
 		compatible = "qcom,eeprom";
@@ -316,9 +305,6 @@
 		clock-rates = <24000000>;
 	};
 
-	/delete-node/ qcom,cam-sensor@0;
-
-	/delete-node/ qcom,cam-sensor@1;
 	sensor_tele: qcom,cam-sensor@1 {
 		cell-index = <1>;
 		compatible = "qcom,cam-sensor";
@@ -360,7 +346,6 @@
 		clock-rates = <24000000>;
 	};
 
-	/delete-node/ qcom,cam-sensor@2;
 	sensor_front: qcom,cam-sensor@2 {
 		cell-index = <2>;
 		compatible = "qcom,cam-sensor";
@@ -369,7 +354,7 @@
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <0>;
-		eeprom-src = <&front_eeprom>;
+		eeprom-src = <&eeprom_front>;
 		cam_vio-supply = <&front_camera_iovdd>;
 		cam_vana-supply = <&front_camera_vdd>;
 		cam_vdig-supply = <&front_camera_dvdd>;
@@ -401,6 +386,4 @@
 		clock-cntl-level = "turbo";
 		clock-rates = <24000000>;
 	};
-
-	/delete-node/ qcom,cam-sensor@3;
 };
