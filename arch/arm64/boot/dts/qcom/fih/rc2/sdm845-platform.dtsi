@@ -198,6 +198,12 @@
 };
 
 &soc {
+	sound-tavil {
+		pinctrl-names = "aud_active", "aud_sleep";
+		pinctrl-0 = <>;
+		pinctrl-1 = <>;
+	};
+
 	gpio_keys {
 		status = "okay";
 		pinctrl-names = "default";
