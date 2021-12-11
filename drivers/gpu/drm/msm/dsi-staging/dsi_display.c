@@ -4157,7 +4157,6 @@ int dsi_display_cont_splash_config(void *dsi_display)
 {
 	struct dsi_display *display = dsi_display;
 	int rc = 0;
-	bool state = false;
 
 	if (!display) {
 		pr_err("Invalid display\n");
